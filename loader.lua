@@ -139,7 +139,7 @@ Settingss:addDropdown("Select Device", {"PC", "Mobile"}, function(Value)
     else
         getgenv().R3THDEVICE = "Mobile"
     end
-    writefile("R3TH PRIV/Auto Load/Device.txt", (R3THMOBILE))
+    writefile("R3TH PRIV/Auto Load/Device.txt", (R3THDEVICE))
 end)
 
 Settingss:addButton("Launch R3TH PRIV", function()
