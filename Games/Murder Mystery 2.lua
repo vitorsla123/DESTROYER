@@ -98,11 +98,13 @@ local players = game:GetService("Players")
 local ReplicatedStorage = game:GetService('ReplicatedStorage')
 local N=game:GetService("VirtualInputManager")
 
-local mt = getrawmetatable(game);
-local old = {};
-for i, v in next, mt do old[i] = v end;
-
-setreadonly(mt,false)
+if R3THEXECUTOR = "Supported" then
+    mt = getrawmetatable(game);
+    old = {};
+    for i, v in next, mt do old[i] = v end;
+    
+    setreadonly(mt,false)
+end
 
 local defualtwalkspeed = 16
 local defualtjumppower = 50
