@@ -171,7 +171,7 @@ function toggleui()
 end
 
 function sendnotification(notificationmessage)
-    if WVryGeXr38ZZtdJWtrBtyeEKdm9Kkweaxm7tnUpuCcH835AQN2aLxV2NeG76kYZuWnCZz4yRr == true then
+    if R3THMOBILE == true then
         StarterGui:SetCore("SendNotification", {
             Title = "R3TH PRIV";
             Text = notificationmessage;
@@ -450,47 +450,49 @@ game.Players.PlayerRemoving:Connect(function(player)
     end
 end)
 
-mt.__namecall = newcclosure(function(...)
-	local method = tostring(getnamecallmethod());
-	local args = {...}
-
-	if method == 'FireServer' and args[1].Name == 'SayMessageRequest' then 
-        if alwaysalivechat == true then
-            args[3] = "Alive"
+if R3THEXECUTOR == "Supported" then
+    mt.__namecall = newcclosure(function(...)
+        local method = tostring(getnamecallmethod());
+        local args = {...}
+    
+        if method == 'FireServer' and args[1].Name == 'SayMessageRequest' then 
+            if alwaysalivechat == true then
+                args[3] = "Alive"
+            end
+            return old.__namecall(unpack(args));
         end
-		return old.__namecall(unpack(args));
-	end
-	return old.__namecall(...)
-end)
-
-setreadonly(mt,true)
-
-getgenv().SheriffAim = false;
-getgenv().GunAccuracy = 25;
-
-local GunHook
-GunHook = hookmetamethod(game, "__namecall", function(self, ...) -------------copy code for shoot player
-	local method = getnamecallmethod()
-	local args = { ... }
-	if not checkcaller() then
-		if typeof(self) == "Instance" then
-			if self.Name == "ShootGun" and method == "InvokeServer" then
-				if getgenv().SheriffAim and getgenv().GunAccuracy then
-					if Murderer then
-						local Root = Players[tostring(Murder)].Character.PrimaryPart;
-						local Veloc = Root.AssemblyLinearVelocity;
-						local Pos = Root.Position + (Veloc * Vector3.new(getgenv().GunAccuracy / 200, 0, getgenv().GunAccuracy/ 200));
-						args[2] = Pos;
-					end;
-				end;
-			end;
-		end;
-	end;
-	return GunHook(self, unpack(args));
-end);
+        return old.__namecall(...)
+    end)
+    
+    setreadonly(mt,true)
+    
+    getgenv().SheriffAim = false;
+    getgenv().GunAccuracy = 25;
+    
+    local GunHook
+    GunHook = hookmetamethod(game, "__namecall", function(self, ...) -------------copy code for shoot player
+        local method = getnamecallmethod()
+        local args = { ... }
+        if not checkcaller() then
+            if typeof(self) == "Instance" then
+                if self.Name == "ShootGun" and method == "InvokeServer" then
+                    if getgenv().SheriffAim and getgenv().GunAccuracy then
+                        if Murderer then
+                            local Root = Players[tostring(Murder)].Character.PrimaryPart;
+                            local Veloc = Root.AssemblyLinearVelocity;
+                            local Pos = Root.Position + (Veloc * Vector3.new(getgenv().GunAccuracy / 200, 0, getgenv().GunAccuracy/ 200));
+                            args[2] = Pos;
+                        end;
+                    end;
+                end;
+            end;
+        end;
+        return GunHook(self, unpack(args));
+    end);
+end
 
 --------------------------------------------------------------------------------------UNIVERSAL----------------------------------------------------------------------------------------
-if WVryGeXr38ZZtdJWtrBtyeEKdm9Kkweaxm7tnUpuCcH835AQN2aLxV2NeG76kYZuWnCZz4yRr == true then
+if R3THMOBILE == true then
     Player:addTextbox("Walkspeed", defualtwalkspeed, function(walkspeed, focusLost)
         newwalkspeed = tonumber(walkspeed)
     end)
@@ -500,7 +502,7 @@ else
     end)
 end
 
-if WVryGeXr38ZZtdJWtrBtyeEKdm9Kkweaxm7tnUpuCcH835AQN2aLxV2NeG76kYZuWnCZz4yRr == true then
+if R3THMOBILE == true then
     Player:addTextbox("Jumppower", defualtjumppower, function(jumppower, focusLost)
         newjumppower = tonumber(jumppower)
     end)
@@ -532,7 +534,7 @@ Player:addToggle("Enable JumpPower", false, function(enablejumppower)
     wait()
 end)
 
-if WVryGeXr38ZZtdJWtrBtyeEKdm9Kkweaxm7tnUpuCcH835AQN2aLxV2NeG76kYZuWnCZz4yRr == true then
+if R3THMOBILE == true then
     Player:addTextbox("Fly Speed", 50, function(flyspeed, focusLost)
         newflyspeed = tonumber(flyspeed)
     end)
@@ -682,7 +684,7 @@ Player:addToggle("Enable Reset", false, function(enablereset)
     game:GetService("StarterGui"):SetCore("ResetButtonCallback", enablereset)
 end)
 
-if WVryGeXr38ZZtdJWtrBtyeEKdm9Kkweaxm7tnUpuCcH835AQN2aLxV2NeG76kYZuWnCZz4yRr == true then
+if R3THMOBILE == true then
     Player:addTextbox("FOV", 70, function(FOV, focusLost)
         game:GetService'Workspace'.Camera.FieldOfView = FOV
     end)
@@ -866,7 +868,7 @@ Murderer:addToggle("Knife Aura", false, function(knifeaura)
 end)
 
 kniferangenum = 20
-if WVryGeXr38ZZtdJWtrBtyeEKdm9Kkweaxm7tnUpuCcH835AQN2aLxV2NeG76kYZuWnCZz4yRr == true then
+if R3THMOBILE == true then
     Player:addTextbox("Knife Range", 20, function(kniferange, focusLost)
         kniferangenum = tonumber(kniferange)
     end)
