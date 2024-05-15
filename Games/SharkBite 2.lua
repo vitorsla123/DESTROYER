@@ -12,53 +12,6 @@
 --------------------------------------------------------------------------------------R3THPRIV----------------------------------------------------------------------------------------
 repeat wait() until game:IsLoaded()
 
-if zac5mDuh2AXjsBebYVg6ZSMEf4yxQkw8dRLNGKHF7J9CPT3qWp ~= true then
-    print("[ R3TH PRIV ]: Stop attempting to directly execute the script or you will be banned.")
-    game.Players.LocalPlayer:Kick("[ R3TH PRIV ]: Stop attempting to directly execute the script or you will be banned.")
-    local function loadscript()
-        while true do
-            loadscript()
-        end
-    end
-    
-    while true do
-        spawn(loadscript)
-    end
-    return
-end
-
-if WVryGeXr38ZZtdJWtrBtyeEKdm9Kkweaxm7tnUpuCcH835AQN2aLxV2NeG76kYZuWnCZz4yRr == nil then
-    print("[ R3TH PRIV ]: Stop attempting to directly execute the script or you will be banned.")
-    game.Players.LocalPlayer:Kick("[ R3TH PRIV ]: Stop attempting to directly execute the script or you will be banned.")
-    local function loadscript()
-        while true do
-            loadscript()
-        end
-    end
-    
-    while true do
-        spawn(loadscript)
-    end
-    return
-end
-
-if g79FuyTGrzxPjNwH6K5BVcSkYERfdaQ2tnDZ4AbC3s8qvp then
-    print("[ R3TH PRIV ]: Stop attempting to directly execute the script or you will be banned.")
-    game.Players.LocalPlayer:Kick("[ R3TH PRIV ]: Stop attempting to directly execute the script or you will be banned.")
-    local function loadscript()
-        while true do
-            loadscript()
-        end
-    end
-    
-    while true do
-        spawn(loadscript)
-    end
-    return
-end
-
-getgenv().g79FuyTGrzxPjNwH6K5BVcSkYERfdaQ2tnDZ4AbC3s8qvp = true
-
 print("[ R3TH PRIV ]: R3TH PRIV SHARKBITE 2 LOADING...")
 
 --------------------------------------------------------------------------------------THEME----------------------------------------------------------------------------------------
@@ -162,7 +115,7 @@ function toggleui()
 end
 
 function sendnotification(notfiicationmessage)
-    if WVryGeXr38ZZtdJWtrBtyeEKdm9Kkweaxm7tnUpuCcH835AQN2aLxV2NeG76kYZuWnCZz4yRr == true then
+    if R3THDEVICE == "Mobile" then
         StarterGui:SetCore("SendNotification", {
             Title = "R3TH PRIV";
             Text = notfiicationmessage;
@@ -273,7 +226,7 @@ game.Players.PlayerRemoving:Connect(function(player)
 end)
 
 --------------------------------------------------------------------------------------UNIVERSAL----------------------------------------------------------------------------------------
-if WVryGeXr38ZZtdJWtrBtyeEKdm9Kkweaxm7tnUpuCcH835AQN2aLxV2NeG76kYZuWnCZz4yRr == true then
+if R3THDEVICE == "Mobile" then
     Player:addTextbox("Walkspeed", defualtwalkspeed, function(walkspeed, focusLost)
         newwalkspeed = tonumber(walkspeed)
     end)
@@ -283,7 +236,7 @@ else
     end)
 end
 
-if WVryGeXr38ZZtdJWtrBtyeEKdm9Kkweaxm7tnUpuCcH835AQN2aLxV2NeG76kYZuWnCZz4yRr == true then
+if R3THDEVICE == "Mobile" then
     Player:addTextbox("Jumppower", defualtjumppower, function(jumppower, focusLost)
         newjumppower = tonumber(jumppower)
     end)
@@ -315,7 +268,7 @@ Player:addToggle("Enable JumpPower", false, function(enablejumppower)
     wait()
 end)
 
-if WVryGeXr38ZZtdJWtrBtyeEKdm9Kkweaxm7tnUpuCcH835AQN2aLxV2NeG76kYZuWnCZz4yRr == true then
+if R3THDEVICE == "Mobile" then
     Player:addTextbox("Fly Speed", 50, function(flyspeed, focusLost)
         newflyspeed = tonumber(flyspeed)
     end)
@@ -481,7 +434,7 @@ Player:addToggle("Enable Reset", false, function(enablereset)
     game:GetService("StarterGui"):SetCore("ResetButtonCallback", enablereset)
 end)
 
-if WVryGeXr38ZZtdJWtrBtyeEKdm9Kkweaxm7tnUpuCcH835AQN2aLxV2NeG76kYZuWnCZz4yRr == true then
+if R3THDEVICE == "Mobile" then
     Player:addTextbox("FOV", 70, function(FOV, focusLost)
         game:GetService'Workspace'.Camera.FieldOfView = FOV
     end)
