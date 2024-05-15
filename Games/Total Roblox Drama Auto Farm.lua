@@ -14,7 +14,7 @@ local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/
 local StarterGui = game:GetService("StarterGui")
 
 function sendnotification(notificationmessage)
-    if WVryGeXr38ZZtdJWtrBtyeEKdm9Kkweaxm7tnUpuCcH835AQN2aLxV2NeG76kYZuWnCZz4yRr == true then
+    if R3THDEVICE == "Mobile" then
         StarterGui:SetCore("SendNotification", {
             Title = "R3TH PRIV";
             Text = notificationmessage;
@@ -28,22 +28,20 @@ function sendnotification(notificationmessage)
     end
 end
 
-if dDq9PUXBMUHzPbXSxPsJbcUsHrYCJD4VKKCTt8nwz then
+if r3thexecuted then
     print("[ R3TH PRIV ]: Script already executed, if your having any problems join discord.gg/pethicial for support.")
     sendnotification("Script already executed, if your having any problems join discord.gg/pethicial for support.")
     return
 end
 
-getgenv().dDq9PUXBMUHzPbXSxPsJbcUsHrYCJD4VKKCTt8nwz = true
+getgenv().r3thexecuted = true
 
 local UIS = game:GetService("UserInputService")
 local PC, PCwithTouch, Touchscreen = (UIS.MouseEnabled and UIS.KeyboardEnabled), (UIS.MouseEnabled and UIS.KeyboardEnabled and UIS.TouchEnabled), UIS.TouchEnabled
 if Touchscreen == true then
-    device = "Mobile"
-    getgenv().WVryGeXr38ZZtdJWtrBtyeEKdm9Kkweaxm7tnUpuCcH835AQN2aLxV2NeG76kYZuWnCZz4yRr = true
+    getgenv().R3THDEVICE = "Mobile"
 else
-    device = "PC"
-    getgenv().WVryGeXr38ZZtdJWtrBtyeEKdm9Kkweaxm7tnUpuCcH835AQN2aLxV2NeG76kYZuWnCZz4yRr = false
+    getgenv().R3THDEVICE = "PC"
 end
 
 print("[ R3TH PRIV ]: " ..device .." detected")
