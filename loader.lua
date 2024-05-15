@@ -144,8 +144,10 @@ end)
 
 Settingss:addButton("Launch R3TH PRIV", function()
     if R3THEXECUTOR ~= nil then
-        R3THLOADER:toggle()
-        loadr3th()
+        if R3THDEVICE ~= nil then
+            R3THLOADER:toggle()
+            loadr3th()
+        end
     else
         sendnotification("To proceed, choose a executor.")
     end
