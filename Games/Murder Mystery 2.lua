@@ -98,7 +98,7 @@ local players = game:GetService("Players")
 local ReplicatedStorage = game:GetService('ReplicatedStorage')
 local N=game:GetService("VirtualInputManager")
 
-if R3THEXECUTOR = "Supported" then
+if R3THEXECUTOR == "Supported" then
     mt = getrawmetatable(game);
     old = {};
     for i, v in next, mt do old[i] = v end;
