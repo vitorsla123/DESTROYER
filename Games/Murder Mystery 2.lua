@@ -173,7 +173,7 @@ function toggleui()
 end
 
 function sendnotification(notificationmessage)
-    if R3THMOBILE == true then
+    if R3THDEVICE == "Mobile" then
         StarterGui:SetCore("SendNotification", {
             Title = "R3TH PRIV";
             Text = notificationmessage;
@@ -494,7 +494,7 @@ if R3THEXECUTOR == "Supported" then
 end
 
 --------------------------------------------------------------------------------------UNIVERSAL----------------------------------------------------------------------------------------
-if R3THMOBILE == "Mobile" then
+if R3THDEVICE == "Mobile" then
     Player:addTextbox("Walkspeed", defualtwalkspeed, function(walkspeed, focusLost)
         newwalkspeed = tonumber(walkspeed)
     end)
@@ -504,7 +504,7 @@ else
     end)
 end
 
-if R3THMOBILE == "Mobile" then
+if R3THDEVICE == "Mobile" then
     Player:addTextbox("Jumppower", defualtjumppower, function(jumppower, focusLost)
         newjumppower = tonumber(jumppower)
     end)
@@ -686,7 +686,7 @@ Player:addToggle("Enable Reset", false, function(enablereset)
     game:GetService("StarterGui"):SetCore("ResetButtonCallback", enablereset)
 end)
 
-if R3THMOBILE == "Mobile" then
+if R3THDEVICE == "Mobile" then
     Player:addTextbox("FOV", 70, function(FOV, focusLost)
         game:GetService'Workspace'.Camera.FieldOfView = FOV
     end)
@@ -870,7 +870,7 @@ Murderer:addToggle("Knife Aura", false, function(knifeaura)
 end)
 
 kniferangenum = 20
-if R3THMOBILE == "Mobile" then
+if R3THDEVICE == "Mobile" then
     Player:addTextbox("Knife Range", 20, function(kniferange, focusLost)
         kniferangenum = tonumber(kniferange)
     end)
