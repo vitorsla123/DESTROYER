@@ -46,6 +46,10 @@ if not isfolder("R3TH PRIV/Auto Load") then
 end
 
 function loadr3th()
+    if R3THDEVICE == "Unsupported" then
+        print("[ R3TH PRIV ]: Unsupported executor detected, some scripts may not work.")
+        sendnotification("Unsupported executor detected, some scripts may not work.")
+    end
     print("[ R3TH PRIV ]: Script loading, this may take awhile depending on your device.")
     sendnotification("Script loading, this may take awhile depending on your device.")
     if game.PlaceId == (142823291 or 335132309 or 636649648) then
@@ -75,6 +79,9 @@ function loadr3th()
         print("[ R3TH PRIV ]: Game Supported!")
         loadstring(game:HttpGet('https://raw.githubusercontent.com/R3TH-PRIV/R3THPRIV/main/Games/Blade%20Ball.lua'))()
     elseif game.PlaceId == 14732610803 then
+        print("[ R3TH PRIV ]: Game Supported!")
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/R3TH-PRIV/R3THPRIV/main/Games/Blade%20Ball.lua'))()
+    elseif game.PlaceId == 13772394625 then
         print("[ R3TH PRIV ]: Game Supported!")
         loadstring(game:HttpGet('https://raw.githubusercontent.com/R3TH-PRIV/R3THPRIV/main/Games/Blade%20Ball.lua'))()
     elseif game.PlaceId == 4889315193 then
