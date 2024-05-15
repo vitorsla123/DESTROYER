@@ -136,9 +136,9 @@ end)
 Settingss:addDropdown("Select Device", {"PC", "Mobile"}, function(Value)
     ChangeDevice = Value
     if ChangeDevice == "PC" then
-        getgenv().R3THMOBILE = "PC"
+        getgenv().R3THDEVICE = "PC"
     else
-        getgenv().R3THMOBILE = "Mobile"
+        getgenv().R3THDEVICE = "Mobile"
     end
     writefile("R3TH PRIV/Auto Load/Device.txt", (R3THMOBILE))
 end)
