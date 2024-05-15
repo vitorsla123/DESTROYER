@@ -41,6 +41,10 @@ if not isfolder("R3TH PRIV") then
     makefolder("R3TH PRIV")
 end
 
+if not isfolder("R3TH PRIV/Auto Load") then
+    makefolder("R3TH PRIV/Auto Load")
+end
+
 function loadr3th()
     print("[ R3TH PRIV ]: Script loading, this may take awhile depending on your device.")
     sendnotification("Script loading, this may take awhile depending on your device.")
@@ -101,21 +105,14 @@ function loadr3th()
     return
 end
 
-local UIS = game:GetService("UserInputService")
-local PC, PCwithTouch, Touchscreen = (UIS.MouseEnabled and UIS.KeyboardEnabled), (UIS.MouseEnabled and UIS.KeyboardEnabled and UIS.TouchEnabled), UIS.TouchEnabled
-if Touchscreen == true then
-    getgenv().R3THMOBILE = true
-else
-    getgenv().R3THMOBILE = false
-end
-
-print("[ R3TH PRIV ]: " ..R3THDEVICE .." detected")
-
-if isfile("R3TH PRIV/Executor.txt") then
-    getgenv().R3THEXECUTOR = readfile("R3TH PRIV/Executor.txt")
-    print(R3THEXECUTOR)
-    loadr3th()
-    return
+if isfile("R3TH PRIV/Auto Load/Executor.txt") then
+    if isfile("R3TH PRIV/Auto Load/Device.txt") then
+        getgenv().R3THEXECUTOR = readfile("R3TH PRIV/Auto Load/Executor.txt")
+        getgenv().R3THDEVICE = readfile("R3TH PRIV/Auto Load/Device.txt")
+        print(R3THEXECUTOR)
+        loadr3th()
+        return
+    end
 end
 
 --------------------------------------------------------------------------------------DEFINE----------------------------------------------------------------------------------------
@@ -127,12 +124,23 @@ local Settingss = Settings:addSection("Settings")
 --------------------------------------------------------------------------------------SETTINGS----------------------------------------------------------------------------------------
 
 Settingss:addDropdown("Select Executor", {"Solara", "Codex", "Other"}, function(Value)
-    if Value == "Solara" then
+    ChangeExecutor = Value
+    if ChangeExecutor == "Solara" then
         getgenv().R3THEXECUTOR = "Unsupported"
     else
         getgenv().R3THEXECUTOR = "Supported"
     end
-    writefile("R3TH PRIV/Executor.txt", (R3THEXECUTOR))
+    writefile("R3TH PRIV/Auto Load/Executor.txt", (R3THEXECUTOR))
+end)
+
+Settingss:addDropdown("Select Device", {"PC", "Mobile"}, function(Value)
+    ChangeDevice = Value
+    if ChangeDevice == "PC" then
+        getgenv().R3THMOBILE = "PC"
+    else
+        getgenv().R3THMOBILE = "Mobile"
+    end
+    writefile("R3TH PRIV/Auto Load/Device.txt", (R3THMOBILE))
 end)
 
 Settingss:addButton("Launch R3TH PRIV", function()
