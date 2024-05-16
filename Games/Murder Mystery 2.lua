@@ -98,14 +98,6 @@ local players = game:GetService("Players")
 local ReplicatedStorage = game:GetService('ReplicatedStorage')
 local N=game:GetService("VirtualInputManager")
 
-if R3THEXECUTOR == "Supported" then
-    mt = getrawmetatable(game);
-    old = {};
-    for i, v in next, mt do old[i] = v end;
-    
-    setreadonly(mt,false)
-end
-
 local defualtwalkspeed = 16
 local defualtjumppower = 50
 local defualtgravity = 196.1999969482422
@@ -370,6 +362,53 @@ function dropgun()
     N:SendKeyEvent(true,"Backspace",false,game)
 end
 
+function loadsupported()
+    mt = getrawmetatable(game);
+    old = {};
+    for i, v in next, mt do old[i] = v end;
+    
+    setreadonly(mt,false)
+
+    mt.__namecall = newcclosure(function(...)
+        local method = tostring(getnamecallmethod());
+        local args = {...}
+    
+        if method == 'FireServer' and args[1].Name == 'SayMessageRequest' then 
+            if alwaysalivechat == true then
+                args[3] = "Alive"
+            end
+            return old.__namecall(unpack(args));
+        end
+        return old.__namecall(...)
+    end)
+    
+    setreadonly(mt,true)
+    
+    getgenv().SheriffAim = false;
+    getgenv().GunAccuracy = 25;
+    
+    local GunHook
+    GunHook = hookmetamethod(game, "__namecall", function(self, ...) -------------copy code for shoot player
+        local method = getnamecallmethod()
+        local args = { ... }
+        if not checkcaller() then
+            if typeof(self) == "Instance" then
+                if self.Name == "ShootGun" and method == "InvokeServer" then
+                    if getgenv().SheriffAim and getgenv().GunAccuracy then
+                        if Murderer then
+                            local Root = Players[tostring(Murder)].Character.PrimaryPart;
+                            local Veloc = Root.AssemblyLinearVelocity;
+                            local Pos = Root.Position + (Veloc * Vector3.new(getgenv().GunAccuracy / 200, 0, getgenv().GunAccuracy/ 200));
+                            args[2] = Pos;
+                        end;
+                    end;
+                end;
+            end;
+        end;
+        return GunHook(self, unpack(args));
+    end);
+end
+
 --------------------------------------------------------------------------------------EXTRA----------------------------------------------------------------------------------------
 local VirtualUser = game:service'VirtualUser'
 game:service'Players'.LocalPlayer.Idled:connect(function()
@@ -453,44 +492,7 @@ game.Players.PlayerRemoving:Connect(function(player)
 end)
 
 if R3THEXECUTOR == "Supported" then
-    mt.__namecall = newcclosure(function(...)
-        local method = tostring(getnamecallmethod());
-        local args = {...}
-    
-        if method == 'FireServer' and args[1].Name == 'SayMessageRequest' then 
-            if alwaysalivechat == true then
-                args[3] = "Alive"
-            end
-            return old.__namecall(unpack(args));
-        end
-        return old.__namecall(...)
-    end)
-    
-    setreadonly(mt,true)
-    
-    getgenv().SheriffAim = false;
-    getgenv().GunAccuracy = 25;
-    
-    local GunHook
-    GunHook = hookmetamethod(game, "__namecall", function(self, ...) -------------copy code for shoot player
-        local method = getnamecallmethod()
-        local args = { ... }
-        if not checkcaller() then
-            if typeof(self) == "Instance" then
-                if self.Name == "ShootGun" and method == "InvokeServer" then
-                    if getgenv().SheriffAim and getgenv().GunAccuracy then
-                        if Murderer then
-                            local Root = Players[tostring(Murder)].Character.PrimaryPart;
-                            local Veloc = Root.AssemblyLinearVelocity;
-                            local Pos = Root.Position + (Veloc * Vector3.new(getgenv().GunAccuracy / 200, 0, getgenv().GunAccuracy/ 200));
-                            args[2] = Pos;
-                        end;
-                    end;
-                end;
-            end;
-        end;
-        return GunHook(self, unpack(args));
-    end);
+    loadsupported()
 end
 
 --------------------------------------------------------------------------------------UNIVERSAL----------------------------------------------------------------------------------------
