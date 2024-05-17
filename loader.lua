@@ -131,7 +131,9 @@ local Settingss = Settings:addSection("Settings")
 
 Settingss:addDropdown("Select Executor", {"Solara", "Codex", "Other"}, function(Value)
     ChangeExecutor = Value
-    if ChangeExecutor == "Solara" or "Other" then
+    if ChangeExecutor == "Solara" then
+        getgenv().R3THEXECUTOR = "Unsupported"
+    elseif ChangeExecutor == "Other" then
         getgenv().R3THEXECUTOR = "Unsupported"
     else
         getgenv().R3THEXECUTOR = "Supported"
