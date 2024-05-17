@@ -362,7 +362,7 @@ function dropgun()
     N:SendKeyEvent(true,"Backspace",false,game)
 end
 
-function loadsupported()
+if R3THEXECUTOR == "Supported" then
     mt = getrawmetatable(game);
     old = {};
     for i, v in next, mt do old[i] = v end;
@@ -490,10 +490,6 @@ game.Players.PlayerRemoving:Connect(function(player)
         end
     end
 end)
-
-if R3THEXECUTOR == "Supported" then
-    loadsupported()
-end
 
 --------------------------------------------------------------------------------------UNIVERSAL----------------------------------------------------------------------------------------
 if R3THDEVICE == "Mobile" then
