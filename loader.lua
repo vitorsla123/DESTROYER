@@ -112,15 +112,6 @@ function loadr3th()
     return
 end
 
-if isfile("R3TH PRIV/Auto Load/Executor.txt") then
-    if isfile("R3TH PRIV/Auto Load/Device.txt") then
-        getgenv().R3THEXECUTOR = readfile("R3TH PRIV/Auto Load/Executor.txt")
-        getgenv().R3THDEVICE = readfile("R3TH PRIV/Auto Load/Device.txt")
-        loadr3th()
-        return
-    end
-end
-
 --------------------------------------------------------------------------------------DEFINE----------------------------------------------------------------------------------------
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/R3TH-PRIV/R3THPRIV/main/OtherScripts/VenyxUI.lua"))()
 local R3THLOADER = library.new("R3TH PRIV                                                                                .gg/pethicial", 5013109572)
