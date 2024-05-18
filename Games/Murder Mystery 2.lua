@@ -882,6 +882,16 @@ Sheriff:addToggle("Gun Silent Aim", false, function(gunsilentaim)
     getgenv().SheriffAim = gunsilentaim
 end)
 
+if R3THDEVICE == "Mobile" then
+    Sheriff:addTextbox("Aim Accuracy", 25, function(changeaccuracy, focusLost)
+        getgenv().GunAccuracy = changeaccuracy
+    end)
+else
+    Sheriff:addSlider("Aim Accuracy", 25, 0, 200, function(changeaccuracy)
+        getgenv().GunAccuracy = changeaccuracy
+    end)
+end
+
 Innocent:addDropdown("Fake Die", {"Lay On Back", "Sit Down"}, function(fakedie)
     if fakedie == "Lay On Back" then
         local Human = game:GetService("Players").LocalPlayer.Character and game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass('Humanoid')
