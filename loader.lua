@@ -112,12 +112,14 @@ function loadr3th()
     return
 end
 
-if isfile("R3TH PRIV/Auto Load/Executor.txt") then
-    if isfile("R3TH PRIV/Auto Load/Device.txt") then
-        getgenv().R3THEXECUTOR = readfile("R3TH PRIV/Auto Load/Executor.txt")
-        getgenv().R3THDEVICE = readfile("R3TH PRIV/Auto Load/Device.txt")
-        loadr3th()
-        return
+if resetautoload ~= true then
+    if isfile("R3TH PRIV/Auto Load/Executor.txt") then
+        if isfile("R3TH PRIV/Auto Load/Device.txt") then
+            getgenv().R3THEXECUTOR = readfile("R3TH PRIV/Auto Load/Executor.txt")
+            getgenv().R3THDEVICE = readfile("R3TH PRIV/Auto Load/Device.txt")
+            loadr3th()
+            return
+        end
     end
 end
 
@@ -129,7 +131,7 @@ local Settingss = Settings:addSection("Settings")
 
 --------------------------------------------------------------------------------------SETTINGS----------------------------------------------------------------------------------------
 
-Settingss:addDropdown("Select Executor", {"Solara", "Codex", "Arceus X", "Delta", "Other"}, function(Value)
+Settingss:addDropdown("Select Executor", {"Solara", "Codex", "Fluxus", "Arceus X", "Delta", "Other"}, function(Value)
     ChangeExecutor = Value
     if ChangeExecutor == "Solara" then
         getgenv().R3THEXECUTOR = "Unsupported"
