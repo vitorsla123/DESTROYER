@@ -44,7 +44,7 @@ else
     getgenv().R3THDEVICE = "PC"
 end
 
-if type(hookfunction) == "function" or type(hookf) == "function" then
+if type(__namecall) == "function" then
     getgenv().R3THEXECUTOR = "Supported"
 else
     getgenv().R3THEXECUTOR = "Unsupported"
