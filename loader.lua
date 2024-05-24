@@ -60,7 +60,7 @@ sendnotification("Script loading, this may take awhile depending on your device.
 
 if game.PlaceId == (142823291 or 335132309 or 636649648) then
     print("[ R3TH PRIV ]: Game Supported!")
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/R3TH-PRIV/R3THPRIV/main/Games/Murder%20Mystery%202.lua'))()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/vitorsla123/DESTROYER/main/Games/Murder%20Mystery%202.lua'))()
 elseif game.PlaceId == 7863262550 then
     print("[ R3TH PRIV ]: Game Supported!")
     loadstring(game:HttpGet('https://raw.githubusercontent.com/R3TH-PRIV/R3THPRIV/main/Games/FOBLOX.lua'))()
